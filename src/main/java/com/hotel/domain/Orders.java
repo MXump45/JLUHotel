@@ -1,8 +1,9 @@
 package com.hotel.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Orders {
+public class Orders implements Serializable {
     private String ordernumber;
 
     private String orderstatus;
@@ -100,6 +101,38 @@ public class Orders {
     }
 
     public void setOrdertime(Date ordertime) {
+        this.ordertime = ordertime;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "ordernumber='" + ordernumber + '\'' +
+                ", orderstatus='" + orderstatus + '\'' +
+                ", customeridcard='" + customeridcard + '\'' +
+                ", roomnumber='" + roomnumber + '\'' +
+                ", checkintime=" + checkintime +
+                ", checkouttime=" + checkouttime +
+                ", totalmoney=" + totalmoney +
+                ", waiterid='" + waiterid + '\'' +
+                ", remarks='" + remarks + '\'' +
+                ", ordertime=" + ordertime +
+                '}';
+    }
+
+    public Orders() {
+    }
+
+    public Orders(String ordernumber, String orderstatus, String customeridcard, String roomnumber, Date checkintime, Date checkouttime, Integer totalmoney, String waiterid, String remarks, Date ordertime) {
+        this.ordernumber = ordernumber;
+        this.orderstatus = orderstatus;
+        this.customeridcard = customeridcard;
+        this.roomnumber = roomnumber;
+        this.checkintime = checkintime;
+        this.checkouttime = checkouttime;
+        this.totalmoney = totalmoney;
+        this.waiterid = waiterid;
+        this.remarks = remarks;
         this.ordertime = ordertime;
     }
 }
