@@ -1,9 +1,8 @@
 package com.hotel.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class OrderTracking implements Serializable {
+public class OrderTracking {
     private String ordernumber;
 
     private Date ordertime;
@@ -52,27 +51,5 @@ public class OrderTracking implements Serializable {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
-    }
-
-    public OrderTracking(String ordernumber, Date ordertime, Date checkintime, Date checkouttime, String remarks) {
-        this.ordernumber = ordernumber;
-        this.ordertime = ordertime;
-        this.checkintime = checkintime;
-        this.checkouttime = checkouttime;
-        this.remarks = remarks;
-    }
-
-    public OrderTracking() {
-    }
-
-    @Override
-    public String toString() {
-        return "OrderTracking{" +
-                "ordernumber='" + ordernumber + '\'' +
-                ", ordertime=" + ordertime +
-                ", checkintime=" + checkintime +
-                ", checkouttime=" + checkouttime +
-                ", remarks='" + remarks + '\'' +
-                '}';
     }
 }

@@ -1,9 +1,8 @@
 package com.hotel.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Customers implements Serializable {
+public class Customers {
     private String customeridcard;
 
     private String customergender;
@@ -81,34 +80,6 @@ public class Customers implements Serializable {
     }
 
     public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    @Override
-    public String toString() {
-        return "Customers{" +
-                "customeridcard='" + customeridcard + '\'' +
-                ", customergender='" + customergender + '\'' +
-                ", customername='" + customername + '\'' +
-                ", customerbirthday=" + customerbirthday +
-                ", customerviplevel=" + customerviplevel +
-                ", customerphonenumber='" + customerphonenumber + '\'' +
-                ", totalamount=" + totalamount +
-                ", remarks='" + remarks + '\'' +
-                '}';
-    }
-
-    public Customers() {
-    }
-
-    public Customers(String customeridcard, String customergender, String customername, Date customerbirthday, Short customerviplevel, String customerphonenumber, Integer totalamount, String remarks) {
-        this.customeridcard = customeridcard;
-        this.customergender = customergender;
-        this.customername = customername;
-        this.customerbirthday = customerbirthday;
-        this.customerviplevel = customerviplevel;
-        this.customerphonenumber = customerphonenumber;
-        this.totalamount = totalamount;
         this.remarks = remarks;
     }
 }

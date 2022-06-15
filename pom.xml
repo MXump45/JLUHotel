@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.hotel</groupId>
+  <groupId>org.jlu</groupId>
   <artifactId>Hotel</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -201,19 +201,7 @@
   </dependencies>
 
   <build>
-    <finalName>JLUHotel</finalName>
-
-    <resources>
-      <resource>
-        <directory>src/main/java</directory>
-        <includes>
-          <!--                    项目的XXXmapper.xml配置文件在dao包下,需要发布出去-->
-          <include>**/*.xml</include>
-          <include>**/*.properties</include>
-        </includes>
-      </resource>
-    </resources>
-
+    <finalName>Hotel</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

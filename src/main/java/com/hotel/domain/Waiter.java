@@ -82,32 +82,4 @@ public class Waiter {
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
-
-    public Waiter(String waiterid, String waitername, Date waiterbirthday, String waiteridcard, String waiterpassword, Date waiterjoindate, String waiterphonenumber, String remarks) {
-        this.waiterid = waiterid;
-        this.waitername = waitername;
-        this.waiterbirthday = waiterbirthday;
-        this.waiteridcard = waiteridcard;
-        this.waiterpassword = waiterpassword;
-        this.waiterjoindate = waiterjoindate;
-        this.waiterphonenumber = waiterphonenumber;
-        this.remarks = remarks;
-    }
-
-    public Waiter() {
-    }
-
-    @Override
-    public String toString() {
-        return "Waiter{" +
-                "waiterid='" + waiterid + '\'' +
-                ", waitername='" + waitername + '\'' +
-                ", waiterbirthday=" + waiterbirthday +
-                ", waiteridcard='" + waiteridcard + '\'' +
-                ", waiterpassword='" + waiterpassword + '\'' +
-                ", waiterjoindate=" + waiterjoindate +
-                ", waiterphonenumber='" + waiterphonenumber + '\'' +
-                ", remarks='" + remarks + '\'' +
-                '}';
-    }
 }

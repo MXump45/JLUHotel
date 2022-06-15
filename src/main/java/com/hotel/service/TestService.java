@@ -2,8 +2,6 @@ package com.hotel.service;
 
 import com.hotel.domain.Room;
 
-import java.util.List;
-
 /**
  * @author Groza
  * @InterfaceName TestService
@@ -12,5 +10,4 @@ import java.util.List;
  */
 public interface TestService {
     Room findRoom(String id);
-    List<Room> selectAll();
 }

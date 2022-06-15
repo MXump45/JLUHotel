@@ -6,8 +6,6 @@ import com.hotel.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @author Groza
  * @ClassName UserServiceImpl
@@ -21,15 +19,8 @@ public class TestServiceImpl implements TestService {
     public Room findRoom(String id) {
         return roomMapper.selectByPrimaryKey(id);
     }
-
-    @Override
-    public List<Room> selectAll() {
-       return roomMapper.selectByExample(null);
-    }
-
     @Autowired
     public void setRoomMapper(RoomMapper roomMapper) {
         this.roomMapper = roomMapper;
     }
-
 }
