@@ -1,8 +1,9 @@
 package com.hotel.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class VipLevel {
+public class VipLevel implements Serializable {
     private Short level;
 
     private BigDecimal discount;
@@ -41,5 +42,25 @@ public class VipLevel {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public VipLevel(Short level, BigDecimal discount, Long totalamount, String remarks) {
+        this.level = level;
+        this.discount = discount;
+        this.totalamount = totalamount;
+        this.remarks = remarks;
+    }
+
+    public VipLevel() {
+    }
+
+    @Override
+    public String toString() {
+        return "VipLevel{" +
+                "level=" + level +
+                ", discount=" + discount +
+                ", totalamount=" + totalamount +
+                ", remarks='" + remarks + '\'' +
+                '}';
     }
 }

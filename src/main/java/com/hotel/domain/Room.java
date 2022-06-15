@@ -1,6 +1,8 @@
 package com.hotel.domain;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
     private String roomnumber;
 
     private String roomtype;
@@ -39,5 +41,25 @@ public class Room {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomnumber='" + roomnumber + '\'' +
+                ", roomtype='" + roomtype + '\'' +
+                ", roomstatus='" + roomstatus + '\'' +
+                ", remarks='" + remarks + '\'' +
+                '}';
+    }
+
+    public Room(String roomnumber, String roomtype, String roomstatus, String remarks) {
+        this.roomnumber = roomnumber;
+        this.roomtype = roomtype;
+        this.roomstatus = roomstatus;
+        this.remarks = remarks;
+    }
+
+    public Room() {
     }
 }

@@ -1,6 +1,8 @@
 package com.hotel.domain;
 
-public class RoomTypeAndPrice {
+import java.io.Serializable;
+
+public class RoomTypeAndPrice implements Serializable {
     private String roomtype;
 
     private Integer price;
@@ -39,5 +41,25 @@ public class RoomTypeAndPrice {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "RoomTypeAndPrice{" +
+                "roomtype='" + roomtype + '\'' +
+                ", price=" + price +
+                ", desc='" + desc + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
+
+    public RoomTypeAndPrice(String roomtype, Integer price, String desc, String url) {
+        this.roomtype = roomtype;
+        this.price = price;
+        this.desc = desc;
+        this.url = url;
+    }
+
+    public RoomTypeAndPrice() {
     }
 }

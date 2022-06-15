@@ -1,8 +1,9 @@
 package com.hotel.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TimeExtension {
+public class TimeExtension implements Serializable {
     private Integer operatingid;
 
     private String ordernumber;
@@ -51,5 +52,27 @@ public class TimeExtension {
 
     public void setAddedmoney(Integer addedmoney) {
         this.addedmoney = addedmoney;
+    }
+
+    public TimeExtension(Integer operatingid, String ordernumber, Date oldexpirydate, Date newexpirydate, Integer addedmoney) {
+        this.operatingid = operatingid;
+        this.ordernumber = ordernumber;
+        this.oldexpirydate = oldexpirydate;
+        this.newexpirydate = newexpirydate;
+        this.addedmoney = addedmoney;
+    }
+
+    public TimeExtension() {
+    }
+
+    @Override
+    public String toString() {
+        return "TimeExtension{" +
+                "operatingid=" + operatingid +
+                ", ordernumber='" + ordernumber + '\'' +
+                ", oldexpirydate=" + oldexpirydate +
+                ", newexpirydate=" + newexpirydate +
+                ", addedmoney=" + addedmoney +
+                '}';
     }
 }
