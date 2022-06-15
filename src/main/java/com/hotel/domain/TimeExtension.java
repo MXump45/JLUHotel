@@ -1,8 +1,9 @@
 package com.hotel.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TimeExtension {
+public class TimeExtension implements Serializable {
     private Integer operatingid;
 
     private String ordernumber;

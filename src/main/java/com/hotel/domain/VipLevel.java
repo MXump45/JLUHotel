@@ -1,8 +1,9 @@
 package com.hotel.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class VipLevel {
+public class VipLevel implements Serializable {
     private Short level;
 
     private BigDecimal discount;

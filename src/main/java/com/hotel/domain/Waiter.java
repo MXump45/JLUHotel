@@ -1,8 +1,9 @@
 package com.hotel.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Waiter {
+public class Waiter implements Serializable {
     private String waiterid;
 
     private String waitername;
