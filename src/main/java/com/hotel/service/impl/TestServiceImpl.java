@@ -1,6 +1,6 @@
-package com.hotel.Service.Impl;
+package com.hotel.service.impl;
 
-import com.hotel.Service.TestService;
+import com.hotel.service.TestService;
 import com.hotel.dao.RoomMapper;
 import com.hotel.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
