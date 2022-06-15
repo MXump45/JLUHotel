@@ -1,4 +1,4 @@
-package com.hotel.Service;
+package com.hotel.service;
 
 import com.hotel.domain.Room;
 
