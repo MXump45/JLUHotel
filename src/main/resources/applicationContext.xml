@@ -63,7 +63,7 @@
     </bean>
     <!--    2.3 配置动态代理指定接口-->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="vip.epss.dao"></property>
+        <property name="basePackage" value="com.hotel.dao"></property>
     </bean>
     <!--    3 配置spring框架的声明式事务-->
     <!--    3.1 配置事务管理器-->
