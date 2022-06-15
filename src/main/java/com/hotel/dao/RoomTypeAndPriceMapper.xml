@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="vip.epss.dao.SystemAdministratorMapper">
-  <resultMap id="BaseResultMap" type="com.hotel.domain.SystemAdministrator">
-    <id column="userID" jdbcType="VARCHAR" property="userid" />
-    <result column="userName" jdbcType="VARCHAR" property="username" />
-    <result column="userPassword" jdbcType="VARCHAR" property="userpassword" />
+<mapper namespace="com.hotel.dao.RoomTypeAndPriceMapper">
+  <resultMap id="BaseResultMap" type="com.hotel.domain.RoomTypeAndPrice">
+    <id column="roomType" jdbcType="VARCHAR" property="roomtype" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    userID, userName, userPassword
+    roomType, price, desc, url
   </sql>
-  <select id="selectByExample" parameterType="com.hotel.domain.SystemAdministratorExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.hotel.domain.RoomTypeAndPriceExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from systemadministrator
+    from roomtypeandprice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +85,76 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from systemadministrator
-    where userID = #{userid,jdbcType=VARCHAR}
+    from roomtypeandprice
+    where roomType = #{roomtype,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from systemadministrator
-    where userID = #{userid,jdbcType=VARCHAR}
+    delete from roomtypeandprice
+    where roomType = #{roomtype,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hotel.domain.SystemAdministratorExample">
-    delete from systemadministrator
+  <delete id="deleteByExample" parameterType="com.hotel.domain.RoomTypeAndPriceExample">
+    delete from roomtypeandprice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hotel.domain.SystemAdministrator">
-    insert into systemadministrator (userID, userName, userPassword
-      )
-    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.hotel.domain.RoomTypeAndPrice">
+    insert into roomtypeandprice (roomType, price, desc, 
+      url)
+    values (#{roomtype,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{desc,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hotel.domain.SystemAdministrator">
-    insert into systemadministrator
+  <insert id="insertSelective" parameterType="com.hotel.domain.RoomTypeAndPrice">
+    insert into roomtypeandprice
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        userID,
+      <if test="roomtype != null">
+        roomType,
       </if>
-      <if test="username != null">
-        userName,
+      <if test="price != null">
+        price,
       </if>
-      <if test="userpassword != null">
-        userPassword,
+      <if test="desc != null">
+        desc,
+      </if>
+      <if test="url != null">
+        url,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=VARCHAR},
+      <if test="roomtype != null">
+        #{roomtype,jdbcType=VARCHAR},
       </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
       </if>
-      <if test="userpassword != null">
-        #{userpassword,jdbcType=VARCHAR},
+      <if test="desc != null">
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.hotel.domain.SystemAdministratorExample" resultType="java.lang.Long">
-    select count(*) from systemadministrator
+  <select id="countByExample" parameterType="com.hotel.domain.RoomTypeAndPriceExample" resultType="java.lang.Long">
+    select count(*) from roomtypeandprice
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update systemadministrator
+    update roomtypeandprice
     <set>
-      <if test="record.userid != null">
-        userID = #{record.userid,jdbcType=VARCHAR},
+      <if test="record.roomtype != null">
+        roomType = #{record.roomtype,jdbcType=VARCHAR},
       </if>
-      <if test="record.username != null">
-        userName = #{record.username,jdbcType=VARCHAR},
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=INTEGER},
       </if>
-      <if test="record.userpassword != null">
-        userPassword = #{record.userpassword,jdbcType=VARCHAR},
+      <if test="record.desc != null">
+        desc = #{record.desc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -152,30 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update systemadministrator
-    set userID = #{record.userid,jdbcType=VARCHAR},
-      userName = #{record.username,jdbcType=VARCHAR},
-      userPassword = #{record.userpassword,jdbcType=VARCHAR}
+    update roomtypeandprice
+    set roomType = #{record.roomtype,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=INTEGER},
+      desc = #{record.desc,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.SystemAdministrator">
-    update systemadministrator
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.RoomTypeAndPrice">
+    update roomtypeandprice
     <set>
-      <if test="username != null">
-        userName = #{username,jdbcType=VARCHAR},
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
       </if>
-      <if test="userpassword != null">
-        userPassword = #{userpassword,jdbcType=VARCHAR},
+      <if test="desc != null">
+        desc = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
       </if>
     </set>
-    where userID = #{userid,jdbcType=VARCHAR}
+    where roomType = #{roomtype,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.SystemAdministrator">
-    update systemadministrator
-    set userName = #{username,jdbcType=VARCHAR},
-      userPassword = #{userpassword,jdbcType=VARCHAR}
-    where userID = #{userid,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.RoomTypeAndPrice">
+    update roomtypeandprice
+    set price = #{price,jdbcType=INTEGER},
+      desc = #{desc,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where roomType = #{roomtype,jdbcType=VARCHAR}
   </update>
 </mapper>

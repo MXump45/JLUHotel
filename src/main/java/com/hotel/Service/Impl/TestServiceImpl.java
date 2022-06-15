@@ -1,10 +1,10 @@
 package com.hotel.Service.Impl;
 
 import com.hotel.Service.TestService;
+import com.hotel.dao.RoomMapper;
 import com.hotel.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vip.epss.dao.RoomMapper;
 
 /**
  * @author Groza

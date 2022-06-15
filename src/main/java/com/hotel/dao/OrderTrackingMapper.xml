@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="vip.epss.dao.VipLevelMapper">
-  <resultMap id="BaseResultMap" type="com.hotel.domain.VipLevel">
-    <id column="level" jdbcType="SMALLINT" property="level" />
-    <result column="discount" jdbcType="DECIMAL" property="discount" />
-    <result column="totalAmount" jdbcType="BIGINT" property="totalamount" />
+<mapper namespace="com.hotel.dao.OrderTrackingMapper">
+  <resultMap id="BaseResultMap" type="com.hotel.domain.OrderTracking">
+    <id column="orderNumber" jdbcType="CHAR" property="ordernumber" />
+    <result column="orderTime" jdbcType="DATE" property="ordertime" />
+    <result column="checkInTime" jdbcType="DATE" property="checkintime" />
+    <result column="checkOutTime" jdbcType="DATE" property="checkouttime" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    level, discount, totalAmount, remarks
+    orderNumber, orderTime, checkInTime, checkOutTime, remarks
   </sql>
-  <select id="selectByExample" parameterType="com.hotel.domain.VipLevelExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.hotel.domain.OrderTrackingExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from viplevel
+    from ordertracking
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,76 +83,85 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from viplevel
-    where level = #{level,jdbcType=SMALLINT}
+    from ordertracking
+    where orderNumber = #{ordernumber,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
-    delete from viplevel
-    where level = #{level,jdbcType=SMALLINT}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ordertracking
+    where orderNumber = #{ordernumber,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hotel.domain.VipLevelExample">
-    delete from viplevel
+  <delete id="deleteByExample" parameterType="com.hotel.domain.OrderTrackingExample">
+    delete from ordertracking
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hotel.domain.VipLevel">
-    insert into viplevel (level, discount, totalAmount, 
-      remarks)
-    values (#{level,jdbcType=SMALLINT}, #{discount,jdbcType=DECIMAL}, #{totalamount,jdbcType=BIGINT}, 
-      #{remarks,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.hotel.domain.OrderTracking">
+    insert into ordertracking (orderNumber, orderTime, checkInTime, 
+      checkOutTime, remarks)
+    values (#{ordernumber,jdbcType=CHAR}, #{ordertime,jdbcType=DATE}, #{checkintime,jdbcType=DATE}, 
+      #{checkouttime,jdbcType=DATE}, #{remarks,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hotel.domain.VipLevel">
-    insert into viplevel
+  <insert id="insertSelective" parameterType="com.hotel.domain.OrderTracking">
+    insert into ordertracking
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="level != null">
-        level,
+      <if test="ordernumber != null">
+        orderNumber,
       </if>
-      <if test="discount != null">
-        discount,
+      <if test="ordertime != null">
+        orderTime,
       </if>
-      <if test="totalamount != null">
-        totalAmount,
+      <if test="checkintime != null">
+        checkInTime,
+      </if>
+      <if test="checkouttime != null">
+        checkOutTime,
       </if>
       <if test="remarks != null">
         remarks,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="level != null">
-        #{level,jdbcType=SMALLINT},
+      <if test="ordernumber != null">
+        #{ordernumber,jdbcType=CHAR},
       </if>
-      <if test="discount != null">
-        #{discount,jdbcType=DECIMAL},
+      <if test="ordertime != null">
+        #{ordertime,jdbcType=DATE},
       </if>
-      <if test="totalamount != null">
-        #{totalamount,jdbcType=BIGINT},
+      <if test="checkintime != null">
+        #{checkintime,jdbcType=DATE},
+      </if>
+      <if test="checkouttime != null">
+        #{checkouttime,jdbcType=DATE},
       </if>
       <if test="remarks != null">
         #{remarks,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.hotel.domain.VipLevelExample" resultType="java.lang.Long">
-    select count(*) from viplevel
+  <select id="countByExample" parameterType="com.hotel.domain.OrderTrackingExample" resultType="java.lang.Long">
+    select count(*) from ordertracking
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update viplevel
+    update ordertracking
     <set>
-      <if test="record.level != null">
-        level = #{record.level,jdbcType=SMALLINT},
+      <if test="record.ordernumber != null">
+        orderNumber = #{record.ordernumber,jdbcType=CHAR},
       </if>
-      <if test="record.discount != null">
-        discount = #{record.discount,jdbcType=DECIMAL},
+      <if test="record.ordertime != null">
+        orderTime = #{record.ordertime,jdbcType=DATE},
       </if>
-      <if test="record.totalamount != null">
-        totalAmount = #{record.totalamount,jdbcType=BIGINT},
+      <if test="record.checkintime != null">
+        checkInTime = #{record.checkintime,jdbcType=DATE},
+      </if>
+      <if test="record.checkouttime != null">
+        checkOutTime = #{record.checkouttime,jdbcType=DATE},
       </if>
       <if test="record.remarks != null">
         remarks = #{record.remarks,jdbcType=VARCHAR},
@@ -162,35 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update viplevel
-    set level = #{record.level,jdbcType=SMALLINT},
-      discount = #{record.discount,jdbcType=DECIMAL},
-      totalAmount = #{record.totalamount,jdbcType=BIGINT},
+    update ordertracking
+    set orderNumber = #{record.ordernumber,jdbcType=CHAR},
+      orderTime = #{record.ordertime,jdbcType=DATE},
+      checkInTime = #{record.checkintime,jdbcType=DATE},
+      checkOutTime = #{record.checkouttime,jdbcType=DATE},
       remarks = #{record.remarks,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.VipLevel">
-    update viplevel
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.OrderTracking">
+    update ordertracking
     <set>
-      <if test="discount != null">
-        discount = #{discount,jdbcType=DECIMAL},
+      <if test="ordertime != null">
+        orderTime = #{ordertime,jdbcType=DATE},
       </if>
-      <if test="totalamount != null">
-        totalAmount = #{totalamount,jdbcType=BIGINT},
+      <if test="checkintime != null">
+        checkInTime = #{checkintime,jdbcType=DATE},
+      </if>
+      <if test="checkouttime != null">
+        checkOutTime = #{checkouttime,jdbcType=DATE},
       </if>
       <if test="remarks != null">
         remarks = #{remarks,jdbcType=VARCHAR},
       </if>
     </set>
-    where level = #{level,jdbcType=SMALLINT}
+    where orderNumber = #{ordernumber,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.VipLevel">
-    update viplevel
-    set discount = #{discount,jdbcType=DECIMAL},
-      totalAmount = #{totalamount,jdbcType=BIGINT},
+  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.OrderTracking">
+    update ordertracking
+    set orderTime = #{ordertime,jdbcType=DATE},
+      checkInTime = #{checkintime,jdbcType=DATE},
+      checkOutTime = #{checkouttime,jdbcType=DATE},
       remarks = #{remarks,jdbcType=VARCHAR}
-    where level = #{level,jdbcType=SMALLINT}
+    where orderNumber = #{ordernumber,jdbcType=CHAR}
   </update>
 </mapper>

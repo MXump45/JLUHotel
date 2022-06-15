@@ -1,4 +1,4 @@
-package vip.epss.dao;
+package com.hotel.dao;
 
 import com.hotel.domain.RoomTypeAndPrice;
 import com.hotel.domain.RoomTypeAndPriceExample;

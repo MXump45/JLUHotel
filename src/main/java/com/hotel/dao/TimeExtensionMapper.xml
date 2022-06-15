@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="vip.epss.dao.TimeExtensionMapper">
+<mapper namespace="com.hotel.dao.TimeExtensionMapper">
   <resultMap id="BaseResultMap" type="com.hotel.domain.TimeExtension">
     <id column="operatingID" jdbcType="INTEGER" property="operatingid" />
     <result column="orderNumber" jdbcType="CHAR" property="ordernumber" />

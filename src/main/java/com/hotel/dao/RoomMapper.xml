@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="vip.epss.dao.OrderTrackingMapper">
-  <resultMap id="BaseResultMap" type="com.hotel.domain.OrderTracking">
-    <id column="orderNumber" jdbcType="CHAR" property="ordernumber" />
-    <result column="orderTime" jdbcType="DATE" property="ordertime" />
-    <result column="checkInTime" jdbcType="DATE" property="checkintime" />
-    <result column="checkOutTime" jdbcType="DATE" property="checkouttime" />
+<mapper namespace="com.hotel.dao.RoomMapper">
+  <resultMap id="BaseResultMap" type="com.hotel.domain.Room">
+    <id column="roomNumber" jdbcType="CHAR" property="roomnumber" />
+    <result column="roomType" jdbcType="VARCHAR" property="roomtype" />
+    <result column="roomStatus" jdbcType="CHAR" property="roomstatus" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -67,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    orderNumber, orderTime, checkInTime, checkOutTime, remarks
+    roomNumber, roomType, roomStatus, remarks
   </sql>
-  <select id="selectByExample" parameterType="com.hotel.domain.OrderTrackingExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.hotel.domain.RoomExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from ordertracking
+    from room
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,82 +85,73 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from ordertracking
-    where orderNumber = #{ordernumber,jdbcType=CHAR}
+    from room
+    where roomNumber = #{roomnumber,jdbcType=CHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from ordertracking
-    where orderNumber = #{ordernumber,jdbcType=CHAR}
+    delete from room
+    where roomNumber = #{roomnumber,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hotel.domain.OrderTrackingExample">
-    delete from ordertracking
+  <delete id="deleteByExample" parameterType="com.hotel.domain.RoomExample">
+    delete from room
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hotel.domain.OrderTracking">
-    insert into ordertracking (orderNumber, orderTime, checkInTime, 
-      checkOutTime, remarks)
-    values (#{ordernumber,jdbcType=CHAR}, #{ordertime,jdbcType=DATE}, #{checkintime,jdbcType=DATE}, 
-      #{checkouttime,jdbcType=DATE}, #{remarks,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.hotel.domain.Room">
+    insert into room (roomNumber, roomType, roomStatus, 
+      remarks)
+    values (#{roomnumber,jdbcType=CHAR}, #{roomtype,jdbcType=VARCHAR}, #{roomstatus,jdbcType=CHAR}, 
+      #{remarks,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hotel.domain.OrderTracking">
-    insert into ordertracking
+  <insert id="insertSelective" parameterType="com.hotel.domain.Room">
+    insert into room
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="ordernumber != null">
-        orderNumber,
+      <if test="roomnumber != null">
+        roomNumber,
       </if>
-      <if test="ordertime != null">
-        orderTime,
+      <if test="roomtype != null">
+        roomType,
       </if>
-      <if test="checkintime != null">
-        checkInTime,
-      </if>
-      <if test="checkouttime != null">
-        checkOutTime,
+      <if test="roomstatus != null">
+        roomStatus,
       </if>
       <if test="remarks != null">
         remarks,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="ordernumber != null">
-        #{ordernumber,jdbcType=CHAR},
+      <if test="roomnumber != null">
+        #{roomnumber,jdbcType=CHAR},
       </if>
-      <if test="ordertime != null">
-        #{ordertime,jdbcType=DATE},
+      <if test="roomtype != null">
+        #{roomtype,jdbcType=VARCHAR},
       </if>
-      <if test="checkintime != null">
-        #{checkintime,jdbcType=DATE},
-      </if>
-      <if test="checkouttime != null">
-        #{checkouttime,jdbcType=DATE},
+      <if test="roomstatus != null">
+        #{roomstatus,jdbcType=CHAR},
       </if>
       <if test="remarks != null">
         #{remarks,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.hotel.domain.OrderTrackingExample" resultType="java.lang.Long">
-    select count(*) from ordertracking
+  <select id="countByExample" parameterType="com.hotel.domain.RoomExample" resultType="java.lang.Long">
+    select count(*) from room
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update ordertracking
+    update room
     <set>
-      <if test="record.ordernumber != null">
-        orderNumber = #{record.ordernumber,jdbcType=CHAR},
+      <if test="record.roomnumber != null">
+        roomNumber = #{record.roomnumber,jdbcType=CHAR},
       </if>
-      <if test="record.ordertime != null">
-        orderTime = #{record.ordertime,jdbcType=DATE},
+      <if test="record.roomtype != null">
+        roomType = #{record.roomtype,jdbcType=VARCHAR},
       </if>
-      <if test="record.checkintime != null">
-        checkInTime = #{record.checkintime,jdbcType=DATE},
-      </if>
-      <if test="record.checkouttime != null">
-        checkOutTime = #{record.checkouttime,jdbcType=DATE},
+      <if test="record.roomstatus != null">
+        roomStatus = #{record.roomstatus,jdbcType=CHAR},
       </if>
       <if test="record.remarks != null">
         remarks = #{record.remarks,jdbcType=VARCHAR},
@@ -172,40 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update ordertracking
-    set orderNumber = #{record.ordernumber,jdbcType=CHAR},
-      orderTime = #{record.ordertime,jdbcType=DATE},
-      checkInTime = #{record.checkintime,jdbcType=DATE},
-      checkOutTime = #{record.checkouttime,jdbcType=DATE},
+    update room
+    set roomNumber = #{record.roomnumber,jdbcType=CHAR},
+      roomType = #{record.roomtype,jdbcType=VARCHAR},
+      roomStatus = #{record.roomstatus,jdbcType=CHAR},
       remarks = #{record.remarks,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.OrderTracking">
-    update ordertracking
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.Room">
+    update room
     <set>
-      <if test="ordertime != null">
-        orderTime = #{ordertime,jdbcType=DATE},
+      <if test="roomtype != null">
+        roomType = #{roomtype,jdbcType=VARCHAR},
       </if>
-      <if test="checkintime != null">
-        checkInTime = #{checkintime,jdbcType=DATE},
-      </if>
-      <if test="checkouttime != null">
-        checkOutTime = #{checkouttime,jdbcType=DATE},
+      <if test="roomstatus != null">
+        roomStatus = #{roomstatus,jdbcType=CHAR},
       </if>
       <if test="remarks != null">
         remarks = #{remarks,jdbcType=VARCHAR},
       </if>
     </set>
-    where orderNumber = #{ordernumber,jdbcType=CHAR}
+    where roomNumber = #{roomnumber,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.OrderTracking">
-    update ordertracking
-    set orderTime = #{ordertime,jdbcType=DATE},
-      checkInTime = #{checkintime,jdbcType=DATE},
-      checkOutTime = #{checkouttime,jdbcType=DATE},
+  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.Room">
+    update room
+    set roomType = #{roomtype,jdbcType=VARCHAR},
+      roomStatus = #{roomstatus,jdbcType=CHAR},
       remarks = #{remarks,jdbcType=VARCHAR}
-    where orderNumber = #{ordernumber,jdbcType=CHAR}
+    where roomNumber = #{roomnumber,jdbcType=CHAR}
   </update>
 </mapper>

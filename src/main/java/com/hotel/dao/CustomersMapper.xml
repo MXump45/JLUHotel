@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="vip.epss.dao.CustomersMapper">
+<mapper namespace="com.hotel.dao.CustomersMapper">
   <resultMap id="BaseResultMap" type="com.hotel.domain.Customers">
     <id column="customerIDCard" jdbcType="CHAR" property="customeridcard" />
     <result column="customerGender" jdbcType="CHAR" property="customergender" />
