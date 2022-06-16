@@ -256,4 +256,229 @@
       remarks = #{remarks,jdbcType=VARCHAR}
     where customerIDCard = #{customeridcard,jdbcType=CHAR}
   </update>
+  <resultMap id="BaseResultMap" type="com.hotel.domain.Customers">
+    <id column="customerIDCard" jdbcType="CHAR" property="customeridcard" />
+    <result column="customerGender" jdbcType="CHAR" property="customergender" />
+    <result column="customerName" jdbcType="VARCHAR" property="customername" />
+    <result column="customerBirthday" jdbcType="DATE" property="customerbirthday" />
+    <result column="customerPhoneNumber" jdbcType="CHAR" property="customerphonenumber" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    customerIDCard, customerGender, customerName, customerBirthday, customerPhoneNumber, 
+    remarks
+  </sql>
+  <select id="selectByExample" parameterType="com.hotel.domain.CustomersExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customers
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customers
+    where customerIDCard = #{customeridcard,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from customers
+    where customerIDCard = #{customeridcard,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hotel.domain.CustomersExample">
+    delete from customers
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hotel.domain.Customers">
+    insert into customers (customerIDCard, customerGender, customerName, 
+      customerBirthday, customerPhoneNumber, remarks
+      )
+    values (#{customeridcard,jdbcType=CHAR}, #{customergender,jdbcType=CHAR}, #{customername,jdbcType=VARCHAR}, 
+      #{customerbirthday,jdbcType=DATE}, #{customerphonenumber,jdbcType=CHAR}, #{remarks,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hotel.domain.Customers">
+    insert into customers
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customeridcard != null">
+        customerIDCard,
+      </if>
+      <if test="customergender != null">
+        customerGender,
+      </if>
+      <if test="customername != null">
+        customerName,
+      </if>
+      <if test="customerbirthday != null">
+        customerBirthday,
+      </if>
+      <if test="customerphonenumber != null">
+        customerPhoneNumber,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customeridcard != null">
+        #{customeridcard,jdbcType=CHAR},
+      </if>
+      <if test="customergender != null">
+        #{customergender,jdbcType=CHAR},
+      </if>
+      <if test="customername != null">
+        #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="customerbirthday != null">
+        #{customerbirthday,jdbcType=DATE},
+      </if>
+      <if test="customerphonenumber != null">
+        #{customerphonenumber,jdbcType=CHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hotel.domain.CustomersExample" resultType="java.lang.Long">
+    select count(*) from customers
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update customers
+    <set>
+      <if test="record.customeridcard != null">
+        customerIDCard = #{record.customeridcard,jdbcType=CHAR},
+      </if>
+      <if test="record.customergender != null">
+        customerGender = #{record.customergender,jdbcType=CHAR},
+      </if>
+      <if test="record.customername != null">
+        customerName = #{record.customername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerbirthday != null">
+        customerBirthday = #{record.customerbirthday,jdbcType=DATE},
+      </if>
+      <if test="record.customerphonenumber != null">
+        customerPhoneNumber = #{record.customerphonenumber,jdbcType=CHAR},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update customers
+    set customerIDCard = #{record.customeridcard,jdbcType=CHAR},
+      customerGender = #{record.customergender,jdbcType=CHAR},
+      customerName = #{record.customername,jdbcType=VARCHAR},
+      customerBirthday = #{record.customerbirthday,jdbcType=DATE},
+      customerPhoneNumber = #{record.customerphonenumber,jdbcType=CHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.Customers">
+    update customers
+    <set>
+      <if test="customergender != null">
+        customerGender = #{customergender,jdbcType=CHAR},
+      </if>
+      <if test="customername != null">
+        customerName = #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="customerbirthday != null">
+        customerBirthday = #{customerbirthday,jdbcType=DATE},
+      </if>
+      <if test="customerphonenumber != null">
+        customerPhoneNumber = #{customerphonenumber,jdbcType=CHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where customerIDCard = #{customeridcard,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.Customers">
+    update customers
+    set customerGender = #{customergender,jdbcType=CHAR},
+      customerName = #{customername,jdbcType=VARCHAR},
+      customerBirthday = #{customerbirthday,jdbcType=DATE},
+      customerPhoneNumber = #{customerphonenumber,jdbcType=CHAR},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where customerIDCard = #{customeridcard,jdbcType=CHAR}
+  </update>
 </mapper>

@@ -20,8 +20,6 @@ public interface OrdersMapper {
 
     Orders selectByPrimaryKey(String ordernumber);
 
-    Orders selectBycustomerIDCard(String customerIDCard);
-
     int updateByExampleSelective(@Param("record") Orders record, @Param("example") OrdersExample example);
 
     int updateByExample(@Param("record") Orders record, @Param("example") OrdersExample example);
@@ -29,5 +27,4 @@ public interface OrdersMapper {
     int updateByPrimaryKeySelective(Orders record);
 
     int updateByPrimaryKey(Orders record);
-
 }
