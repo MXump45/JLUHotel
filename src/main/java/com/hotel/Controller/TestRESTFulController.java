@@ -30,4 +30,12 @@ public class TestRESTFulController {
         messageAndData.add("obj", room).setMessage("查询成功");
         return messageAndData;
     }
+
+    @RequestMapping(value = "/room2", method = RequestMethod.GET)
+    public MessageAndData test02(){
+        Room room = service.findRoom("000001");
+        MessageAndData messageAndData = MessageAndData.success();
+        messageAndData.add("obj", room).setMessage("查询成功");
+        return messageAndData;
+    }
 }
