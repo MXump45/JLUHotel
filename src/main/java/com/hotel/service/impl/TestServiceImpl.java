@@ -1,8 +1,6 @@
 package com.hotel.service.impl;
 
 import com.hotel.service.TestService;
-import com.hotel.dao.RoomMapper;
-import com.hotel.domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,20 +14,20 @@ import java.util.List;
  */
 @Service(value = "testService")
 public class TestServiceImpl implements TestService {
-    private RoomMapper roomMapper;
-    @Override
-    public Room findRoom(String id) {
-        return roomMapper.selectByPrimaryKey(id);
-    }
-
-    @Override
-    public List<Room> selectAll() {
-       return roomMapper.selectByExample(null);
-    }
-
-    @Autowired
-    public void setRoomMapper(RoomMapper roomMapper) {
-        this.roomMapper = roomMapper;
-    }
+//    private RoomMapper roomMapper;
+//    @Override
+//    public Room findRoom(String id) {
+//        return roomMapper.selectByPrimaryKey(id);
+//    }
+//
+//    @Override
+//    public List<Room> selectAll() {
+//       return roomMapper.selectByExample(null);
+//    }
+//
+//    @Autowired
+//    public void setRoomMapper(RoomMapper roomMapper) {
+//        this.roomMapper = roomMapper;
+//    }
 
 }

@@ -27,4 +27,5 @@ public interface RoomTypeAndPriceMapper {
     int updateByPrimaryKeySelective(RoomTypeAndPrice record);
 
     int updateByPrimaryKey(RoomTypeAndPrice record);
+
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hotel.dao.SystemAdministratorMapper">
-  <resultMap id="BaseResultMap" type="com.hotel.domain.SystemAdministrator">
+<mapper namespace="com.hotel.dao.SystemadministratorMapper">
+  <resultMap id="BaseResultMap" type="com.hotel.domain.Systemadministrator">
     <id column="userID" jdbcType="VARCHAR" property="userid" />
     <result column="userName" jdbcType="VARCHAR" property="username" />
     <result column="userPassword" jdbcType="VARCHAR" property="userpassword" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     userID, userName, userPassword
   </sql>
-  <select id="selectByExample" parameterType="com.hotel.domain.SystemAdministratorExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.hotel.domain.SystemadministratorExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from systemadministrator
     where userID = #{userid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hotel.domain.SystemAdministratorExample">
+  <delete id="deleteByExample" parameterType="com.hotel.domain.SystemadministratorExample">
     delete from systemadministrator
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hotel.domain.SystemAdministrator">
+  <insert id="insert" parameterType="com.hotel.domain.Systemadministrator">
     insert into systemadministrator (userID, userName, userPassword
       )
     values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hotel.domain.SystemAdministrator">
+  <insert id="insertSelective" parameterType="com.hotel.domain.Systemadministrator">
     insert into systemadministrator
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userid != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.hotel.domain.SystemAdministratorExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.hotel.domain.SystemadministratorExample" resultType="java.lang.Long">
     select count(*) from systemadministrator
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.SystemAdministrator">
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.Systemadministrator">
     update systemadministrator
     <set>
       <if test="username != null">
@@ -172,7 +172,7 @@
     </set>
     where userID = #{userid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.SystemAdministrator">
+  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.Systemadministrator">
     update systemadministrator
     set userName = #{username,jdbcType=VARCHAR},
       userPassword = #{userpassword,jdbcType=VARCHAR}

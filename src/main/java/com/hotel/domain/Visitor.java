@@ -9,6 +9,26 @@ public class Visitor {
 
     private String email;
 
+    @Override
+    public String toString() {
+        return "Visitor{" +
+                "visitorname='" + visitorname + '\'' +
+                ", visitorpwd='" + visitorpwd + '\'' +
+                ", phonenumber='" + phonenumber + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    public Visitor() {
+    }
+
+    public Visitor(String visitorname, String visitorpwd, String phonenumber, String email) {
+        this.visitorname = visitorname;
+        this.visitorpwd = visitorpwd;
+        this.phonenumber = phonenumber;
+        this.email = email;
+    }
+
     public String getVisitorname() {
         return visitorname;
     }

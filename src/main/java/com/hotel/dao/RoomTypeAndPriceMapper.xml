@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    roomType, price, desc, url
+    roomType, price, `desc`, url
   </sql>
   <select id="selectByExample" parameterType="com.hotel.domain.RoomTypeAndPriceExample" resultMap="BaseResultMap">
     select

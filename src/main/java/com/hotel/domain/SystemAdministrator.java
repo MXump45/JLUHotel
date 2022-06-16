@@ -1,6 +1,8 @@
 package com.hotel.domain;
 
-public class SystemAdministrator {
+import java.io.Serializable;
+
+public class SystemAdministrator implements Serializable {
     private String userid;
 
     private String username;
@@ -29,5 +31,23 @@ public class SystemAdministrator {
 
     public void setUserpassword(String userpassword) {
         this.userpassword = userpassword;
+    }
+
+    @Override
+    public String toString() {
+        return "SystemAdministrator{" +
+                "userid='" + userid + '\'' +
+                ", username='" + username + '\'' +
+                ", userpassword='" + userpassword + '\'' +
+                '}';
+    }
+
+    public SystemAdministrator(String userid, String username, String userpassword) {
+        this.userid = userid;
+        this.username = username;
+        this.userpassword = userpassword;
+    }
+
+    public SystemAdministrator() {
     }
 }

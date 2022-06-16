@@ -9,3 +9,4 @@ logs
 out
 gen
 target
+/log/info.log
