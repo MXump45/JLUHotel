@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>注册</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <style type="text/css">
+        .container{
+            width: 600px;
+            height: 430px;
+            min-height: 250px;
+            max-height: 800px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            padding: 20px;
+            z-index: 130;
+            border-radius: 8px;
+            background-color: #fff;
+            /*box-shadow: 0 3px 18px rgba(100, 0, 0, .5);*/
+            font-size: 16px;
+        }
+        .close{
+            background-color: white;
+            border: none;
+            font-size: 18px;
+            margin-left: 410px;
+            margin-top: -10px;
+        }
+
+        .msg{
+            margin-left:120px;
+            margin-top: 8px;
+        }
+
+        .layui-input{
+            border-radius: 5px;
+            width: 300px;
+            height: 40px;
+            font-size: 15px;
+        }
+        .layui-form-item{
+            margin-left: -20px;
+            margin-top: 20px;
+        }
+        #logoid{
+            margin-top: -16px;
+            padding-left:150px;
+            padding-bottom: 15px;
+        }
+        .layui-btn{
+            margin-left: -50px;
+            border-radius: 5px;
+            width: 350px;
+            height: 40px;
+            font-size: 15px;
+        }
+        .verity{
+            width: 120px;
+        }
+        .font-set{
+            text-align:center;
+            font-size: 13px;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+<form class="layui-form" action="" method="post">
+    <div class="container">
+        <div class="layui-form-item" style="margin-top: 40px">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input type="text" id="username" name="username" required  lay-verify="required" placeholder="请输入1到20位中英文或数字" autocomplete="off" class="layui-input"/>
+            </div>
+            <font color="red" class="layui-inline" style="margin-left:120px;margin-top: 8px"></font>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">登录密码</label>
+            <div class="layui-input-inline">
+                <input type="password" id="password" name="password" required lay-verify="required" placeholder="6-20位数字、字母、符号，不能包含空格" autocomplete="off" class="layui-input">
+            </div>
+            <font color="red" class="layui-inline" style="margin-left:120px;margin-top: 8px"></font>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-inline">
+                <input type="password" id="rePassword" name="rePassword" required lay-verify="required" placeholder="请再次填写密码" autocomplete="off" class="layui-input">
+            </div>
+            <font color="red" class="layui-inline" style="margin-left:120px;margin-top: 8px"></font>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号码</label>
+            <div class="layui-input-inline">
+                <input type="text" id="phone" name="phone" required  lay-verify="required" placeholder="请输入手机号码" autocomplete="off" class="layui-input">
+            </div>
+            <font color="red" class="layui-inline" style="margin-left:120px;margin-top: 8px"></font>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-inline">
+                <input type="text" id="email" name="email" placeholder="请输入邮箱地址" autocomplete="off" class="layui-input">
+            </div>
+            <font color="red" class="layui-inline" style="margin-left:120px;margin-top: 8px"></font>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="login">注 &nbsp;&nbsp;册</button>
+            </div>
+        </div>
+        <div class="font-set">
+            已是会员，<a href="login.html" class="layui-font-orange">直接登录</a>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var $ = layui.jquery
+            ,form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        var username = $("#username");
+        var password = $("#password");
+        var rePassword = $("#rePassword");
+        var phone = $("#phone");
+        var email = $("#email");
+        
+        username.on("blur",function () {
+            if(username.val().match(/^[\u4e00-\u9fa5a-zA-Z0-9]{1,20}$/)){
+                validateTip(username.parent().next(),{"color":"green"},"",true);
+            }else if(username.val() == null || username.val() === ""){
+                validateTip(username.parent().next(),{"color":"red"}," 请输入用户名",false);
+            }else{
+                validateTip(username.parent().next(),{"color":"red"}," 用户名格式不正确",false);
+            }
+        })
+
+        password.on("blur",function () {
+            if(password.val().match(/^[^\u4e00-\u9fa5 ]{6,20}$/)){
+                validateTip(password.parent().next(),{"color":"green"},"",true);
+            }else if(password.val() == null || password.val() === ""){
+                validateTip(password.parent().next(),{"color":"red"}," 登录密码不能为空",false);
+            }else{
+                validateTip(password.parent().next(),{"color":"red"}," 密码格式不符合要求",false);
+            }
+        })
+
+        rePassword.on("blur",function () {
+            if(rePassword.val() == null || rePassword.val() === ""){
+                validateTip(rePassword.parent().next(),{"color":"red"}," 确认密码必须输入",false);
+            }else if(password.val() == rePassword.val()){
+                validateTip(rePassword.parent().next(),{"color":"green"},"",true);
+            }else{
+                validateTip(rePassword.parent().next(),{"color":"red"}," 两次输入密码不一致",false);
+            }
+        })
+
+        phone.on("blur",function () {
+            if(phone.val().match(/^1[3|4|5|7|8]\d{9}$/)){
+                validateTip(phone.parent().next(),{"color":"green"},"",true);
+            }else if(phone.val() == null || phone.val() === ""){
+                validateTip(phone.parent().next(),{"color":"red"}," 必须输入手机号",false);
+            }else{
+                validateTip(phone.parent().next(),{"color":"red"}," 手机号格式不正确",false);
+            }
+        })
+
+        email.on("blur",function () {
+            if(email.val().match(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/)){
+                validateTip(email.parent().next(),{"color":"green"},"",true);
+            }else if(email.val() == null || email.val() === ""){
+                validateTip(email.parent().next(),{"color":"green"},"",true);
+            }else{
+                validateTip(email.parent().next(),{"color":"red"}," 邮箱格式不正确",false);
+            }
+        })
+
+
+
+        //监听提交
+        form.on('submit(login)', function(data){
+
+            username.blur();
+            password.blur();
+            rePassword.blur();
+            phone.blur();
+            email.blur();
+            if(!(  username.attr("validateStatus") == "true"
+                && password.attr("validateStatus") == "true"
+                && rePassword.attr("validateStatus") == "true"
+                && phone.attr("validateStatus") == "true"
+                && email.attr("validateStatus") == "true")){
+                return false;
+            }
+
+            var ajaxReturnData;
+            $.ajax(
+                {
+                    url : 'login.json',
+                    type : 'post',
+                    async : false,
+                    data : data.field,
+                    success : function (data)
+                    {
+                        ajaxReturnData = data;
+                    }
+                }
+            );
+
+            //登陆成功
+            if (ajaxReturnData.rendercode == 0)
+            {
+                top.layer.msg("注册成功",
+                    {
+                        icon : 1
+                    }
+                );
+                return false;
+            }
+            else if(ajaxReturnData.rendercode == 1)
+            {
+                top.layer.msg("用户名已存在",
+                    {
+                        icon : 5
+                    }
+                );
+                return false;
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <style type="text/css">
+
+        .layui-table-header{
+            height: 40px;
+            line-height: 40px;
+            text-align: left;
+            vertical-align: text-top;
+        }
+
+        .layui-table-cell{
+            height:120px;
+            vertical-align: center;
+        }
+
+        #barDemo{
+            height:auto;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="layui-container">
+    <ul class="layui-nav layui-row" lay-filter="">
+        <li class="layui-nav-item layui-col-md1.5 layui-col-md-offset10" id="nav1">
+<!--                <a href="login.html" class="layui-icon layui-icon-username">登录</a>-->
+<!--                <dl class="layui-nav-child">-->
+<!--                    <dd><a href="javascript:;">修改信息</a></dd>-->
+<!--                    <dd><a href="javascript:;">安全管理</a></dd>-->
+<!--                    <dd><a href="javascript:;">退了</a></dd>-->
+<!--                </dl>-->
+        </li>
+        <li class="layui-nav-item layui-col-md1.5" id="nav2">
+<!--            <a href="logon.html">注册</a>-->
+        </li>
+    </ul>
+
+    <div class="layui-inline" style="margin: 20px">
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" id="start" placeholder="入住">
+        </div>
+        —
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" id="end" placeholder="离店">
+        </div>
+        <a class="layui-btn" id="query" lay-event="query">确认修改</a>
+    </div>
+
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+</div>
+
+<script src="./layui/layui.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn" lay-event="edit">预定</a>
+</script>
+
+
+<script type="text/javascript" src="homePage.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hotel.dao.VisitorMapper">
+  <resultMap id="BaseResultMap" type="com.hotel.domain.Visitor">
+    <id column="visitorName" jdbcType="VARCHAR" property="visitorname" />
+    <result column="visitorPwd" jdbcType="VARCHAR" property="visitorpwd" />
+    <result column="phoneNumber" jdbcType="VARCHAR" property="phonenumber" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    visitorName, visitorPwd, phoneNumber, email
+  </sql>
+  <select id="selectByExample" parameterType="com.hotel.domain.VisitorExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from visitor
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from visitor
+    where visitorName = #{visitorname,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from visitor
+    where visitorName = #{visitorname,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hotel.domain.VisitorExample">
+    delete from visitor
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hotel.domain.Visitor">
+    insert into visitor (visitorName, visitorPwd, phoneNumber, 
+      email)
+    values (#{visitorname,jdbcType=VARCHAR}, #{visitorpwd,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hotel.domain.Visitor">
+    insert into visitor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="visitorname != null">
+        visitorName,
+      </if>
+      <if test="visitorpwd != null">
+        visitorPwd,
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="visitorname != null">
+        #{visitorname,jdbcType=VARCHAR},
+      </if>
+      <if test="visitorpwd != null">
+        #{visitorpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hotel.domain.VisitorExample" resultType="java.lang.Long">
+    select count(*) from visitor
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update visitor
+    <set>
+      <if test="record.visitorname != null">
+        visitorName = #{record.visitorname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.visitorpwd != null">
+        visitorPwd = #{record.visitorpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phonenumber != null">
+        phoneNumber = #{record.phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update visitor
+    set visitorName = #{record.visitorname,jdbcType=VARCHAR},
+      visitorPwd = #{record.visitorpwd,jdbcType=VARCHAR},
+      phoneNumber = #{record.phonenumber,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.Visitor">
+    update visitor
+    <set>
+      <if test="visitorpwd != null">
+        visitorPwd = #{visitorpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where visitorName = #{visitorname,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.Visitor">
+    update visitor
+    set visitorPwd = #{visitorpwd,jdbcType=VARCHAR},
+      phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
+    where visitorName = #{visitorname,jdbcType=VARCHAR}
+  </update>
+</mapper>

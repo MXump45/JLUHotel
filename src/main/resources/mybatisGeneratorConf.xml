@@ -28,6 +28,7 @@
         <table tableName="room" domainObjectName="Room" />
         <table tableName="roomtypeandprice" domainObjectName="RoomTypeAndPrice" />
         <table tableName="systemadministrator" domainObjectName="SystemAdministrator" />
+        <table tableName="visitor" domainObjectName="Visitor" />
         
 
     </context>
