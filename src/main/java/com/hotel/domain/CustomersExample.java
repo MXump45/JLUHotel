@@ -402,66 +402,6 @@ public class CustomersExample {
             return (Criteria) this;
         }
 
-        public Criteria andCustomerviplevelIsNull() {
-            addCriterion("customerVIPLevel is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelIsNotNull() {
-            addCriterion("customerVIPLevel is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelEqualTo(Short value) {
-            addCriterion("customerVIPLevel =", value, "customerviplevel");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelNotEqualTo(Short value) {
-            addCriterion("customerVIPLevel <>", value, "customerviplevel");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelGreaterThan(Short value) {
-            addCriterion("customerVIPLevel >", value, "customerviplevel");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelGreaterThanOrEqualTo(Short value) {
-            addCriterion("customerVIPLevel >=", value, "customerviplevel");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelLessThan(Short value) {
-            addCriterion("customerVIPLevel <", value, "customerviplevel");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelLessThanOrEqualTo(Short value) {
-            addCriterion("customerVIPLevel <=", value, "customerviplevel");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelIn(List<Short> values) {
-            addCriterion("customerVIPLevel in", values, "customerviplevel");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelNotIn(List<Short> values) {
-            addCriterion("customerVIPLevel not in", values, "customerviplevel");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelBetween(Short value1, Short value2) {
-            addCriterion("customerVIPLevel between", value1, value2, "customerviplevel");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustomerviplevelNotBetween(Short value1, Short value2) {
-            addCriterion("customerVIPLevel not between", value1, value2, "customerviplevel");
-            return (Criteria) this;
-        }
-
         public Criteria andCustomerphonenumberIsNull() {
             addCriterion("customerPhoneNumber is null");
             return (Criteria) this;
@@ -529,66 +469,6 @@ public class CustomersExample {
 
         public Criteria andCustomerphonenumberNotBetween(String value1, String value2) {
             addCriterion("customerPhoneNumber not between", value1, value2, "customerphonenumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountIsNull() {
-            addCriterion("totalAmount is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountIsNotNull() {
-            addCriterion("totalAmount is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountEqualTo(Integer value) {
-            addCriterion("totalAmount =", value, "totalamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountNotEqualTo(Integer value) {
-            addCriterion("totalAmount <>", value, "totalamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountGreaterThan(Integer value) {
-            addCriterion("totalAmount >", value, "totalamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountGreaterThanOrEqualTo(Integer value) {
-            addCriterion("totalAmount >=", value, "totalamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountLessThan(Integer value) {
-            addCriterion("totalAmount <", value, "totalamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountLessThanOrEqualTo(Integer value) {
-            addCriterion("totalAmount <=", value, "totalamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountIn(List<Integer> values) {
-            addCriterion("totalAmount in", values, "totalamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountNotIn(List<Integer> values) {
-            addCriterion("totalAmount not in", values, "totalamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountBetween(Integer value1, Integer value2) {
-            addCriterion("totalAmount between", value1, value2, "totalamount");
-            return (Criteria) this;
-        }
-
-        public Criteria andTotalamountNotBetween(Integer value1, Integer value2) {
-            addCriterion("totalAmount not between", value1, value2, "totalamount");
             return (Criteria) this;
         }
 

@@ -23,16 +23,6 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 <!--        指定数据表的生成策略-->
-        <table tableName="customers" domainObjectName="Customers" />
-        <table tableName="orders" domainObjectName="Orders" />
-        <table tableName="ordertracking" domainObjectName="OrderTracking" />
-        <table tableName="room" domainObjectName="Room" />
-        <table tableName="roomtypeandprice" domainObjectName="RoomTypeAndPrice" />
-        <table tableName="systemadministrator" domainObjectName="SystemAdministrator" />
-        <table tableName="timeextension" domainObjectName="TimeExtension" />
-        <table tableName="viplevel" domainObjectName="VipLevel" />
-        <table tableName="waiter" domainObjectName="Waiter" />
-        
-
+        <table tableName="visitor" domainObjectName="Visitor" />
     </context>
 </generatorConfiguration>

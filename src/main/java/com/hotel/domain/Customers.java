@@ -12,11 +12,7 @@ public class Customers implements Serializable {
 
     private Date customerbirthday;
 
-    private Short customerviplevel;
-
     private String customerphonenumber;
-
-    private Integer totalamount;
 
     private String remarks;
 
@@ -52,28 +48,12 @@ public class Customers implements Serializable {
         this.customerbirthday = customerbirthday;
     }
 
-    public Short getCustomerviplevel() {
-        return customerviplevel;
-    }
-
-    public void setCustomerviplevel(Short customerviplevel) {
-        this.customerviplevel = customerviplevel;
-    }
-
     public String getCustomerphonenumber() {
         return customerphonenumber;
     }
 
     public void setCustomerphonenumber(String customerphonenumber) {
         this.customerphonenumber = customerphonenumber;
-    }
-
-    public Integer getTotalamount() {
-        return totalamount;
-    }
-
-    public void setTotalamount(Integer totalamount) {
-        this.totalamount = totalamount;
     }
 
     public String getRemarks() {
@@ -91,9 +71,7 @@ public class Customers implements Serializable {
                 ", customergender='" + customergender + '\'' +
                 ", customername='" + customername + '\'' +
                 ", customerbirthday=" + customerbirthday +
-                ", customerviplevel=" + customerviplevel +
                 ", customerphonenumber='" + customerphonenumber + '\'' +
-                ", totalamount=" + totalamount +
                 ", remarks='" + remarks + '\'' +
                 '}';
     }
@@ -101,14 +79,12 @@ public class Customers implements Serializable {
     public Customers() {
     }
 
-    public Customers(String customeridcard, String customergender, String customername, Date customerbirthday, Short customerviplevel, String customerphonenumber, Integer totalamount, String remarks) {
+    public Customers(String customeridcard, String customergender, String customername, Date customerbirthday, String customerphonenumber, String remarks) {
         this.customeridcard = customeridcard;
         this.customergender = customergender;
         this.customername = customername;
         this.customerbirthday = customerbirthday;
-        this.customerviplevel = customerviplevel;
         this.customerphonenumber = customerphonenumber;
-        this.totalamount = totalamount;
         this.remarks = remarks;
     }
 }

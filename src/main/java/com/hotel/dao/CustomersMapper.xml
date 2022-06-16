@@ -6,9 +6,7 @@
     <result column="customerGender" jdbcType="CHAR" property="customergender" />
     <result column="customerName" jdbcType="VARCHAR" property="customername" />
     <result column="customerBirthday" jdbcType="DATE" property="customerbirthday" />
-    <result column="customerVIPLevel" jdbcType="SMALLINT" property="customerviplevel" />
     <result column="customerPhoneNumber" jdbcType="CHAR" property="customerphonenumber" />
-    <result column="totalAmount" jdbcType="INTEGER" property="totalamount" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,8 +68,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    customerIDCard, customerGender, customerName, customerBirthday, customerVIPLevel, 
-    customerPhoneNumber, totalAmount, remarks
+    customerIDCard, customerGender, customerName, customerBirthday, customerPhoneNumber, 
+    remarks
   </sql>
   <select id="selectByExample" parameterType="com.hotel.domain.CustomersExample" resultMap="BaseResultMap">
     select
@@ -105,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.hotel.domain.Customers">
     insert into customers (customerIDCard, customerGender, customerName, 
-      customerBirthday, customerVIPLevel, customerPhoneNumber, 
-      totalAmount, remarks)
+      customerBirthday, customerPhoneNumber, remarks
+      )
     values (#{customeridcard,jdbcType=CHAR}, #{customergender,jdbcType=CHAR}, #{customername,jdbcType=VARCHAR}, 
-      #{customerbirthday,jdbcType=DATE}, #{customerviplevel,jdbcType=SMALLINT}, #{customerphonenumber,jdbcType=CHAR}, 
-      #{totalamount,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR})
+      #{customerbirthday,jdbcType=DATE}, #{customerphonenumber,jdbcType=CHAR}, #{remarks,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hotel.domain.Customers">
     insert into customers
@@ -126,14 +124,8 @@
       <if test="customerbirthday != null">
         customerBirthday,
       </if>
-      <if test="customerviplevel != null">
-        customerVIPLevel,
-      </if>
       <if test="customerphonenumber != null">
         customerPhoneNumber,
-      </if>
-      <if test="totalamount != null">
-        totalAmount,
       </if>
       <if test="remarks != null">
         remarks,
@@ -152,14 +144,8 @@
       <if test="customerbirthday != null">
         #{customerbirthday,jdbcType=DATE},
       </if>
-      <if test="customerviplevel != null">
-        #{customerviplevel,jdbcType=SMALLINT},
-      </if>
       <if test="customerphonenumber != null">
         #{customerphonenumber,jdbcType=CHAR},
-      </if>
-      <if test="totalamount != null">
-        #{totalamount,jdbcType=INTEGER},
       </if>
       <if test="remarks != null">
         #{remarks,jdbcType=VARCHAR},
@@ -187,14 +173,8 @@
       <if test="record.customerbirthday != null">
         customerBirthday = #{record.customerbirthday,jdbcType=DATE},
       </if>
-      <if test="record.customerviplevel != null">
-        customerVIPLevel = #{record.customerviplevel,jdbcType=SMALLINT},
-      </if>
       <if test="record.customerphonenumber != null">
         customerPhoneNumber = #{record.customerphonenumber,jdbcType=CHAR},
-      </if>
-      <if test="record.totalamount != null">
-        totalAmount = #{record.totalamount,jdbcType=INTEGER},
       </if>
       <if test="record.remarks != null">
         remarks = #{record.remarks,jdbcType=VARCHAR},
@@ -210,9 +190,7 @@
       customerGender = #{record.customergender,jdbcType=CHAR},
       customerName = #{record.customername,jdbcType=VARCHAR},
       customerBirthday = #{record.customerbirthday,jdbcType=DATE},
-      customerVIPLevel = #{record.customerviplevel,jdbcType=SMALLINT},
       customerPhoneNumber = #{record.customerphonenumber,jdbcType=CHAR},
-      totalAmount = #{record.totalamount,jdbcType=INTEGER},
       remarks = #{record.remarks,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -230,14 +208,8 @@
       <if test="customerbirthday != null">
         customerBirthday = #{customerbirthday,jdbcType=DATE},
       </if>
-      <if test="customerviplevel != null">
-        customerVIPLevel = #{customerviplevel,jdbcType=SMALLINT},
-      </if>
       <if test="customerphonenumber != null">
         customerPhoneNumber = #{customerphonenumber,jdbcType=CHAR},
-      </if>
-      <if test="totalamount != null">
-        totalAmount = #{totalamount,jdbcType=INTEGER},
       </if>
       <if test="remarks != null">
         remarks = #{remarks,jdbcType=VARCHAR},
@@ -250,9 +222,7 @@
     set customerGender = #{customergender,jdbcType=CHAR},
       customerName = #{customername,jdbcType=VARCHAR},
       customerBirthday = #{customerbirthday,jdbcType=DATE},
-      customerVIPLevel = #{customerviplevel,jdbcType=SMALLINT},
       customerPhoneNumber = #{customerphonenumber,jdbcType=CHAR},
-      totalAmount = #{totalamount,jdbcType=INTEGER},
       remarks = #{remarks,jdbcType=VARCHAR}
     where customerIDCard = #{customeridcard,jdbcType=CHAR}
   </update>

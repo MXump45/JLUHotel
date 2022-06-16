@@ -9,7 +9,6 @@
     <result column="checkInTime" jdbcType="DATE" property="checkintime" />
     <result column="checkOutTime" jdbcType="DATE" property="checkouttime" />
     <result column="totalMoney" jdbcType="INTEGER" property="totalmoney" />
-    <result column="waiterID" jdbcType="VARCHAR" property="waiterid" />
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="orderTime" jdbcType="DATE" property="ordertime" />
   </resultMap>
@@ -73,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List">
     orderNumber, orderStatus, customerIDCard, roomNumber, checkInTime, checkOutTime, 
-    totalMoney, waiterID, remarks, orderTime
+    totalMoney, remarks, orderTime
   </sql>
   <select id="selectByExample" parameterType="com.hotel.domain.OrdersExample" resultMap="BaseResultMap">
     select
@@ -108,12 +107,12 @@
   <insert id="insert" parameterType="com.hotel.domain.Orders">
     insert into orders (orderNumber, orderStatus, customerIDCard, 
       roomNumber, checkInTime, checkOutTime, 
-      totalMoney, waiterID, remarks, 
-      orderTime)
+      totalMoney, remarks, orderTime
+      )
     values (#{ordernumber,jdbcType=CHAR}, #{orderstatus,jdbcType=CHAR}, #{customeridcard,jdbcType=CHAR}, 
       #{roomnumber,jdbcType=CHAR}, #{checkintime,jdbcType=DATE}, #{checkouttime,jdbcType=DATE}, 
-      #{totalmoney,jdbcType=INTEGER}, #{waiterid,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
-      #{ordertime,jdbcType=DATE})
+      #{totalmoney,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{ordertime,jdbcType=DATE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hotel.domain.Orders">
     insert into orders
@@ -138,9 +137,6 @@
       </if>
       <if test="totalmoney != null">
         totalMoney,
-      </if>
-      <if test="waiterid != null">
-        waiterID,
       </if>
       <if test="remarks != null">
         remarks,
@@ -170,9 +166,6 @@
       </if>
       <if test="totalmoney != null">
         #{totalmoney,jdbcType=INTEGER},
-      </if>
-      <if test="waiterid != null">
-        #{waiterid,jdbcType=VARCHAR},
       </if>
       <if test="remarks != null">
         #{remarks,jdbcType=VARCHAR},
@@ -212,9 +205,6 @@
       <if test="record.totalmoney != null">
         totalMoney = #{record.totalmoney,jdbcType=INTEGER},
       </if>
-      <if test="record.waiterid != null">
-        waiterID = #{record.waiterid,jdbcType=VARCHAR},
-      </if>
       <if test="record.remarks != null">
         remarks = #{record.remarks,jdbcType=VARCHAR},
       </if>
@@ -235,7 +225,6 @@
       checkInTime = #{record.checkintime,jdbcType=DATE},
       checkOutTime = #{record.checkouttime,jdbcType=DATE},
       totalMoney = #{record.totalmoney,jdbcType=INTEGER},
-      waiterID = #{record.waiterid,jdbcType=VARCHAR},
       remarks = #{record.remarks,jdbcType=VARCHAR},
       orderTime = #{record.ordertime,jdbcType=DATE}
     <if test="_parameter != null">
@@ -263,9 +252,6 @@
       <if test="totalmoney != null">
         totalMoney = #{totalmoney,jdbcType=INTEGER},
       </if>
-      <if test="waiterid != null">
-        waiterID = #{waiterid,jdbcType=VARCHAR},
-      </if>
       <if test="remarks != null">
         remarks = #{remarks,jdbcType=VARCHAR},
       </if>
@@ -283,7 +269,6 @@
       checkInTime = #{checkintime,jdbcType=DATE},
       checkOutTime = #{checkouttime,jdbcType=DATE},
       totalMoney = #{totalmoney,jdbcType=INTEGER},
-      waiterID = #{waiterid,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
       orderTime = #{ordertime,jdbcType=DATE}
     where orderNumber = #{ordernumber,jdbcType=CHAR}

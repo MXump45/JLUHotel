@@ -1,9 +1,8 @@
 package com.hotel.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Orders implements Serializable {
+public class Orders {
     private String ordernumber;
 
     private String orderstatus;
@@ -17,8 +16,6 @@ public class Orders implements Serializable {
     private Date checkouttime;
 
     private Integer totalmoney;
-
-    private String waiterid;
 
     private String remarks;
 
@@ -80,14 +77,6 @@ public class Orders implements Serializable {
         this.totalmoney = totalmoney;
     }
 
-    public String getWaiterid() {
-        return waiterid;
-    }
-
-    public void setWaiterid(String waiterid) {
-        this.waiterid = waiterid;
-    }
-
     public String getRemarks() {
         return remarks;
     }
@@ -114,16 +103,12 @@ public class Orders implements Serializable {
                 ", checkintime=" + checkintime +
                 ", checkouttime=" + checkouttime +
                 ", totalmoney=" + totalmoney +
-                ", waiterid='" + waiterid + '\'' +
                 ", remarks='" + remarks + '\'' +
                 ", ordertime=" + ordertime +
                 '}';
     }
 
-    public Orders() {
-    }
-
-    public Orders(String ordernumber, String orderstatus, String customeridcard, String roomnumber, Date checkintime, Date checkouttime, Integer totalmoney, String waiterid, String remarks, Date ordertime) {
+    public Orders(String ordernumber, String orderstatus, String customeridcard, String roomnumber, Date checkintime, Date checkouttime, Integer totalmoney, String remarks, Date ordertime) {
         this.ordernumber = ordernumber;
         this.orderstatus = orderstatus;
         this.customeridcard = customeridcard;
@@ -131,8 +116,10 @@ public class Orders implements Serializable {
         this.checkintime = checkintime;
         this.checkouttime = checkouttime;
         this.totalmoney = totalmoney;
-        this.waiterid = waiterid;
         this.remarks = remarks;
         this.ordertime = ordertime;
+    }
+
+    public Orders() {
     }
 }

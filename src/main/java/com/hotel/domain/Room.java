@@ -1,8 +1,6 @@
 package com.hotel.domain;
 
-import java.io.Serializable;
-
-public class Room implements Serializable {
+public class Room {
     private String roomnumber;
 
     private String roomtype;

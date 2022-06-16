@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hotel.dao.VipLevelMapper">
-  <resultMap id="BaseResultMap" type="com.hotel.domain.VipLevel">
-    <id column="level" jdbcType="SMALLINT" property="level" />
-    <result column="discount" jdbcType="DECIMAL" property="discount" />
-    <result column="totalAmount" jdbcType="BIGINT" property="totalamount" />
-    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+<mapper namespace="com.hotel.dao.VisitorMapper">
+  <resultMap id="BaseResultMap" type="com.hotel.domain.Visitor">
+    <id column="visitorName" jdbcType="VARCHAR" property="visitorname" />
+    <result column="visitorPwd" jdbcType="VARCHAR" property="visitorpwd" />
+    <result column="phoneNumber" jdbcType="VARCHAR" property="phonenumber" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    level, discount, totalAmount, remarks
+    visitorName, visitorPwd, phoneNumber, email
   </sql>
-  <select id="selectByExample" parameterType="com.hotel.domain.VipLevelExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.hotel.domain.VisitorExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from viplevel
+    from visitor
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,79 +82,79 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from viplevel
-    where level = #{level,jdbcType=SMALLINT}
+    from visitor
+    where visitorName = #{visitorname,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
-    delete from viplevel
-    where level = #{level,jdbcType=SMALLINT}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from visitor
+    where visitorName = #{visitorname,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hotel.domain.VipLevelExample">
-    delete from viplevel
+  <delete id="deleteByExample" parameterType="com.hotel.domain.VisitorExample">
+    delete from visitor
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hotel.domain.VipLevel">
-    insert into viplevel (level, discount, totalAmount, 
-      remarks)
-    values (#{level,jdbcType=SMALLINT}, #{discount,jdbcType=DECIMAL}, #{totalamount,jdbcType=BIGINT}, 
-      #{remarks,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.hotel.domain.Visitor">
+    insert into visitor (visitorName, visitorPwd, phoneNumber, 
+      email)
+    values (#{visitorname,jdbcType=VARCHAR}, #{visitorpwd,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hotel.domain.VipLevel">
-    insert into viplevel
+  <insert id="insertSelective" parameterType="com.hotel.domain.Visitor">
+    insert into visitor
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="level != null">
-        level,
+      <if test="visitorname != null">
+        visitorName,
       </if>
-      <if test="discount != null">
-        discount,
+      <if test="visitorpwd != null">
+        visitorPwd,
       </if>
-      <if test="totalamount != null">
-        totalAmount,
+      <if test="phonenumber != null">
+        phoneNumber,
       </if>
-      <if test="remarks != null">
-        remarks,
+      <if test="email != null">
+        email,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="level != null">
-        #{level,jdbcType=SMALLINT},
+      <if test="visitorname != null">
+        #{visitorname,jdbcType=VARCHAR},
       </if>
-      <if test="discount != null">
-        #{discount,jdbcType=DECIMAL},
+      <if test="visitorpwd != null">
+        #{visitorpwd,jdbcType=VARCHAR},
       </if>
-      <if test="totalamount != null">
-        #{totalamount,jdbcType=BIGINT},
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=VARCHAR},
       </if>
-      <if test="remarks != null">
-        #{remarks,jdbcType=VARCHAR},
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.hotel.domain.VipLevelExample" resultType="java.lang.Long">
-    select count(*) from viplevel
+  <select id="countByExample" parameterType="com.hotel.domain.VisitorExample" resultType="java.lang.Long">
+    select count(*) from visitor
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update viplevel
+    update visitor
     <set>
-      <if test="record.level != null">
-        level = #{record.level,jdbcType=SMALLINT},
+      <if test="record.visitorname != null">
+        visitorName = #{record.visitorname,jdbcType=VARCHAR},
       </if>
-      <if test="record.discount != null">
-        discount = #{record.discount,jdbcType=DECIMAL},
+      <if test="record.visitorpwd != null">
+        visitorPwd = #{record.visitorpwd,jdbcType=VARCHAR},
       </if>
-      <if test="record.totalamount != null">
-        totalAmount = #{record.totalamount,jdbcType=BIGINT},
+      <if test="record.phonenumber != null">
+        phoneNumber = #{record.phonenumber,jdbcType=VARCHAR},
       </if>
-      <if test="record.remarks != null">
-        remarks = #{record.remarks,jdbcType=VARCHAR},
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -162,35 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update viplevel
-    set level = #{record.level,jdbcType=SMALLINT},
-      discount = #{record.discount,jdbcType=DECIMAL},
-      totalAmount = #{record.totalamount,jdbcType=BIGINT},
-      remarks = #{record.remarks,jdbcType=VARCHAR}
+    update visitor
+    set visitorName = #{record.visitorname,jdbcType=VARCHAR},
+      visitorPwd = #{record.visitorpwd,jdbcType=VARCHAR},
+      phoneNumber = #{record.phonenumber,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.VipLevel">
-    update viplevel
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotel.domain.Visitor">
+    update visitor
     <set>
-      <if test="discount != null">
-        discount = #{discount,jdbcType=DECIMAL},
+      <if test="visitorpwd != null">
+        visitorPwd = #{visitorpwd,jdbcType=VARCHAR},
       </if>
-      <if test="totalamount != null">
-        totalAmount = #{totalamount,jdbcType=BIGINT},
+      <if test="phonenumber != null">
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
       </if>
-      <if test="remarks != null">
-        remarks = #{remarks,jdbcType=VARCHAR},
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
       </if>
     </set>
-    where level = #{level,jdbcType=SMALLINT}
+    where visitorName = #{visitorname,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.VipLevel">
-    update viplevel
-    set discount = #{discount,jdbcType=DECIMAL},
-      totalAmount = #{totalamount,jdbcType=BIGINT},
-      remarks = #{remarks,jdbcType=VARCHAR}
-    where level = #{level,jdbcType=SMALLINT}
+  <update id="updateByPrimaryKey" parameterType="com.hotel.domain.Visitor">
+    update visitor
+    set visitorPwd = #{visitorpwd,jdbcType=VARCHAR},
+      phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
+    where visitorName = #{visitorname,jdbcType=VARCHAR}
   </update>
 </mapper>
